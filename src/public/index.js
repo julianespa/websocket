@@ -5,6 +5,7 @@ let chatBox = document.getElementById('chatBox')
 chatBox.addEventListener('keyup',(e)=>{
     if(e.key === 'Enter'){
         socket.emit('message',chatBox.value)
+        chatBox.value = ''
     }
 })
 
@@ -15,5 +16,4 @@ socket.on('history', data=>{
         messages = messages+`${message.userId} dice: ${message.message} <br>`
     });
     history.innerHTML = messages
-    chatBox.value = ''
 })
